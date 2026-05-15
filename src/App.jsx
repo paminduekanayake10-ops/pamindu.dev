@@ -13,7 +13,7 @@ import Admin from "./pages/Admin";
 import AdminLogin from "./pages/AdminLogin";
 import ProtectedAdminRoute from "./routes/ProtectedAdminRoute";
 
-import "./App.css";
+import "./app.css";
 
 function App() {
   const [user, setUser] = useState(null);
