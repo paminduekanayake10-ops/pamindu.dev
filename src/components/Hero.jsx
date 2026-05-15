@@ -21,8 +21,9 @@ function Hero() {
   return (
     <section className="hero">
       <div className="hero-content">
-        <h1>Hi world</h1>
+        
         <p className="hero-sub">Hi, I'm</p>
+        ,<p>hi world</p>
         <h1 className="hero-title">Pamindu</h1>
 
         <h2 className="hero-role">
