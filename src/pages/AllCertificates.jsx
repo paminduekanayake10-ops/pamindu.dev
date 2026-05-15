@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCertificates } from "../services/certificates";
+import { getCertificates } from "../services/Certificates";
 
 function AllCertificates() {
   const [certs, setCerts] = useState([]);
