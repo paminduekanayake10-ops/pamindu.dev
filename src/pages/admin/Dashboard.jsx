@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getProjects } from "../../services/projects";
 import { getCertificates } from "../../services/certificates";
 import StatCard from "../../components/admin/StatCard";
+import { StatCardSkeleton } from "../../components/common/Skeleton";
 
 function Dashboard() {
   const [projects, setProjects] = useState([]);
@@ -29,13 +30,18 @@ function Dashboard() {
     setLoading(false);
   };
 
-  if (loading) {
-    return (
-      <div style={styles.loading}>
-        Loading dashboard...
+if (loading) {
+  return (
+    <div style={styles.container}>
+      <h1 style={styles.title}>Dashboard Overview ⚡</h1>
+      <div style={styles.grid}>
+        <StatCardSkeleton />
+        <StatCardSkeleton />
+        <StatCardSkeleton />
       </div>
-    );
-  }
+    </div>
+  );
+}
 
   return (
     <div style={styles.container}>

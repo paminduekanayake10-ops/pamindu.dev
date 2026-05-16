@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { collection, onSnapshot } from "firebase/firestore";
 
-import { db } from "../../services/firebase";
+import { db } from "../../config/firebase";
 
 import {
   addCertificate,
