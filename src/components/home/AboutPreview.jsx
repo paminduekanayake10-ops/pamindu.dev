@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { getProjects } from "../../services/projects";
 import { AboutStatSkeleton } from "../common/Skeleton";
-
+import { FaProjectDiagram, FaCalendarAlt, FaCode } from "react-icons/fa";
 
 function AboutPreview() {
   const [projects, setProjects] = useState([]);
-  const [loading, setLoading] = useState(true);  // ✅ add loading state
-  const [error, setError] = useState("");        // optional error handling
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     loadProjects();
@@ -22,9 +22,33 @@ function AboutPreview() {
       console.error(err);
       setError("Failed to load projects");
     } finally {
-      setLoading(false);  // ✅ always stop loading
+      setLoading(false);
     }
   };
+
+  const statItems = [
+    {
+      id: 1,
+      value: projects.length,
+      label: "Projects Completed",
+      icon: <FaProjectDiagram />,
+      color: "#3b82f6",
+    },
+    {
+      id: 2,
+      value: "1+",
+      label: "Years Experience",
+      icon: <FaCalendarAlt />,
+      color: "#10b981",
+    },
+    {
+      id: 3,
+      value: "3",
+      label: "Tech Stacks",
+      icon: <FaCode />,
+      color: "#8b5cf6",
+    },
+  ];
 
   return (
     <section className="about">
@@ -39,33 +63,31 @@ function AboutPreview() {
             I enjoy creating clean, scalable, and user-friendly digital experiences.
           </p>
           <a href="/about">
-          <button className="about-btn">
-            More About Me
-          </button>
+            <button className="about-btn">More About Me</button>
           </a>
         </div>
 
-        <div className="about-card">
-          <div className="stat">
-            {loading ? (
+        <div className="about-stats-grid">
+          {loading ? (
+            // Skeleton loaders for stats
+            <>
               <AboutStatSkeleton />
-            ) : error ? (
-              <h3 style={{ color: "#ef4444", fontSize: "1rem" }}>Error</h3>
-            ) : (
-              <h3>{projects.length}</h3>
-            )}
-            <p>Projects</p>
-          </div>
-
-          <div className="stat">
-            <h3>1+</h3>
-            <p>Years Learning</p>
-          </div>
-
-          <div className="stat">
-            <h3>3</h3>
-            <p>Technologies Focus</p>
-          </div>
+              <AboutStatSkeleton />
+              <AboutStatSkeleton />
+            </>
+          ) : error ? (
+            <p className="error">Failed to load stats</p>
+          ) : (
+            statItems.map((stat) => (
+              <div className="about-stat-card" key={stat.id}>
+                <div className="stat-icon" style={{ backgroundColor: stat.color }}>
+                  {stat.icon}
+                </div>
+                <div className="stat-value">{stat.value}</div>
+                <div className="stat-label">{stat.label}</div>
+              </div>
+            ))
+          )}
         </div>
       </div>
     </section>

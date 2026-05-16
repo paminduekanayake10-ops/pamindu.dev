@@ -1360,3 +1360,113 @@ section { width: 100%; }
 .admin-projects-upload-box {
   box-sizing: border-box;
 }
+
+/* =========================
+   REDESIGNED ABOUT CARD (Stats)
+========================= */
+
+.about-stats-grid {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.about-stat-card {
+  background: white;
+  border-radius: 24px;
+  padding: 24px 20px;
+  text-align: center;
+  min-width: 150px;
+  flex: 1;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.about-stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.15);
+}
+
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 60px;
+  font-size: 28px;
+  color: white;
+  transition: transform 0.3s;
+}
+
+.about-stat-card:hover .stat-icon {
+  transform: scale(1.05);
+}
+
+.stat-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-stats-grid {
+    gap: 16px;
+  }
+  .about-stat-card {
+    min-width: 120px;
+    padding: 16px 12px;
+  }
+  .stat-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  .stat-value {
+    font-size: 1.6rem;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-stats-grid {
+    flex-direction: column;
+    width: 100%;
+  }
+  .about-stat-card {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: left;
+    gap: 16px;
+    padding: 16px;
+  }
+  .stat-icon {
+    margin: 0;
+    width: 48px;
+    height: 48px;
+  }
+  .stat-value, .stat-label {
+    flex: 1;
+  }
+  .stat-label {
+    text-align: right;
+  }
+}
