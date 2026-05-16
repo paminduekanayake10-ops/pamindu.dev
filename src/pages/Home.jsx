@@ -1,19 +1,19 @@
 // src/pages/Home.jsx
 
-import Navbar from "../components/Navbar";
-import Hero from "../components/Hero";
-import AboutPreview from "../components/AboutPreview";
-import Skills from "../components/Skills";
-import Projects from "../components/Projects";
-import Certificates from "../components/Certificates";
-import Contact from "../components/Contact";
-import Footer from "../components/Footer";
-
+import Navbar from "../components/common/Navbar";
+import Hero from "../components/home/Hero";
+import AboutPreview from "../components/home/AboutPreview";
+import Skills from "../components/home/Skills";
+import Projects from "../components/home/Projects";
+import Certificates from "../components/home/Certificates";
+import Contact from "../components/home/Contact";
+import Footer from "../components/common/Footer";
+import "../styles/app.css";
+import FullPageLoader from "../components/common/FullPageLoader";
 import useScrollReveal from "../hooks/useScrollReveal";
 
 function Home({ user, logout, darkMode, toggleTheme }) {
   useScrollReveal();
-
   return (
     <>
       <Navbar

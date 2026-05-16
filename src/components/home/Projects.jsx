@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { getProjects } from "../services/projects";
+import { getProjects } from "../../services/projects";
 import { useNavigate } from "react-router-dom";
+import { ProjectCardSkeleton } from "../common/Skeleton";
 
 function Projects() {
   const [projects, setProjects] = useState([]);
@@ -51,7 +52,13 @@ function Projects() {
         </button>
       </div>
 
-      {loading && <p className="message">Loading projects...</p>}
+      {loading && (
+          <div className="skeleton-wrapper">
+            <div className="projects-grid">
+              {[1, 2].map(i => <ProjectCardSkeleton key={i} />)}
+            </div>
+          </div>
+        )}
       {error && <p className="error">{error}</p>}
       {!loading && projects.length === 0 && (
         <p className="message">

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { signOut } from "firebase/auth";
-import { auth } from "../firebase";
+import { auth } from "../config/firebase";
 
 const TIMEOUT = 15 * 60 * 1000; // 15 mins
 
