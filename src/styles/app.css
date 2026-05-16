@@ -1255,88 +1255,108 @@ section { width: 100%; }
 }
 
 /* =========================
-   MOBILE FIXES: Forms, Topbar, Admin Panels
+   MOBILE FIXES (appended)
 ========================= */
 
-/* 1. Contact form: fix right padding on inputs & button */
+/* 1. Contact Form – fix right padding */
 .contact-form input,
 .contact-form textarea,
 .contact-form button {
   width: 100%;
   box-sizing: border-box;
-  padding-right: 16px !important;
   padding-left: 16px !important;
+  padding-right: 16px !important;
 }
 
-/* 2. Admin Certificates & Projects: fix form field padding */
+/* 2. Admin Certificates & Projects – card content & form fields */
+.admin-certificates-card-content,
+.admin-projects-card-content,
+.admin-certificates-card,
+.admin-projects-card {
+  padding-right: 16px !important;
+  padding-left: 16px !important;
+  box-sizing: border-box;
+}
+
 .admin-certificates-input,
 .admin-certificates-textarea,
-.admin-certificates-upload-box,
-.admin-certificates-file-input,
-.admin-certificates-save-btn,
-.admin-certificates-cancel-btn,
-.admin-certificates-edit-btn,
-.admin-certificates-delete-btn {
-  box-sizing: border-box;
-  width: 100%;
-  padding-right: 16px !important;
-  padding-left: 16px !important;
-}
-
-/* Same for admin Projects (if you have similar classes, adjust accordingly) */
 .admin-projects-input,
 .admin-projects-textarea,
+.admin-certificates-upload-box,
 .admin-projects-upload-box,
-.admin-projects-file-input,
+.admin-certificates-save-btn,
+.admin-certificates-cancel-btn,
 .admin-projects-save-btn,
 .admin-projects-cancel-btn {
-  box-sizing: border-box;
   width: 100%;
-  padding-right: 16px !important;
+  box-sizing: border-box;
   padding-left: 16px !important;
+  padding-right: 16px !important;
 }
 
-/* 3. Topbar: ensure email and logout stay on screen and wrap */
+/* 3. Topbar – stack title, then email+logout on mobile */
 @media (max-width: 768px) {
   .topbar {
-    padding: 10px 12px !important;
-    gap: 8px;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 12px !important;
+    gap: 12px;
   }
   .topbar-left {
-    flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 8px;
+    width: 100%;
+  }
+  .topbar-left h2 {
+    font-size: 20px;
+    margin: 0;
   }
   .user-info {
-    margin-left: 0;
+    margin-left: 0 !important;
+    display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 12px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
   }
   .user-email {
-    max-width: 150px;
-    font-size: 12px;
-    overflow-x: auto;
-    white-space: normal;
+    max-width: 65%;
+    font-size: 13px;
     word-break: break-all;
+    white-space: normal;
   }
   .logout-btn {
     white-space: nowrap;
   }
-  /* Ensure hamburger and title don't overlap */
+  /* Adjust hamburger if present */
   .sidebar-hamburger {
-    margin-right: 8px;
-  }
-  .topbar-left h2 {
-    font-size: 18px;
-    white-space: normal;
+    align-self: flex-start;
+    margin-bottom: 4px;
   }
 }
 
-/* 4. Global input/textarea box-sizing for all admin forms */
+/* 4. Ensure all admin cards have inner padding on mobile */
+@media (max-width: 768px) {
+  .admin-certificates-card,
+  .admin-projects-card {
+    padding: 16px !important;
+  }
+  .admin-certificates-card-content,
+  .admin-projects-card-content {
+    padding: 0 !important;
+  }
+}
+
+/* 5. Global box-sizing reset for admin forms */
 .admin-card input,
 .admin-card button,
 .admin-certificates-input,
 .admin-certificates-textarea,
 .admin-projects-input,
-.admin-projects-textarea {
+.admin-projects-textarea,
+.admin-certificates-upload-box,
+.admin-projects-upload-box {
   box-sizing: border-box;
 }
