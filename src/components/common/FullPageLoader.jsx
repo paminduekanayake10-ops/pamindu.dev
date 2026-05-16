@@ -1,7 +1,6 @@
-// src/components/common/FullPageLoader.jsx
 import { useEffect, useState } from "react";
 
-function FullPageLoader({ message = "Loading...", error = false, minDuration = 600 }) {
+function FullPageLoader({ message = "Loading...", error = false, minDuration = 150 }) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth, db } from "../../config/firebase";
 import { doc, getDoc } from "firebase/firestore";
@@ -9,10 +9,15 @@ function AdminLogin() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-
+  
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e) => {
+    e.preventDefault(); // prevent page reload
+    if (loading) return;
+    
     setLoading(true);
     setMessage("");
 
@@ -44,35 +49,45 @@ function AdminLogin() {
     }
   };
 
+  // Move focus from email to password on Enter
+  const handleEmailKeyDown = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      passwordRef.current?.focus();
+    }
+  };
+
   return (
     <div className="admin-login-page">
       <div className="admin-card">
         <h2>Admin Login 🔐</h2>
         <p className="subtitle">Enter admin credentials to continue</p>
 
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          disabled={loading}
-        />
+        <form onSubmit={handleLogin}>
+          <input
+            ref={emailRef}
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onKeyDown={handleEmailKeyDown}
+            disabled={loading}
+            autoFocus
+          />
 
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          disabled={loading}
-        />
+          <input
+            ref={passwordRef}
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            disabled={loading}
+          />
 
-        <button className="admin-login-btn" onClick={handleLogin} disabled={loading}>
-          {loading ? (
-            <span className="button-spinner"></span>
-          ) : (
-            "Login"
-          )}
-        </button>
+          <button type="submit" className="admin-login-btn" disabled={loading}>
+            {loading ? <span className="button-spinner"></span> : "Login"}
+          </button>
+        </form>
 
         {message && <p className="msg">{message}</p>}
       </div>

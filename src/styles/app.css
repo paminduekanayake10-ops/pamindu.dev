@@ -1253,3 +1253,90 @@ section { width: 100%; }
     align-self: flex-start;
   }
 }
+
+/* =========================
+   MOBILE FIXES: Forms, Topbar, Admin Panels
+========================= */
+
+/* 1. Contact form: fix right padding on inputs & button */
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+  width: 100%;
+  box-sizing: border-box;
+  padding-right: 16px !important;
+  padding-left: 16px !important;
+}
+
+/* 2. Admin Certificates & Projects: fix form field padding */
+.admin-certificates-input,
+.admin-certificates-textarea,
+.admin-certificates-upload-box,
+.admin-certificates-file-input,
+.admin-certificates-save-btn,
+.admin-certificates-cancel-btn,
+.admin-certificates-edit-btn,
+.admin-certificates-delete-btn {
+  box-sizing: border-box;
+  width: 100%;
+  padding-right: 16px !important;
+  padding-left: 16px !important;
+}
+
+/* Same for admin Projects (if you have similar classes, adjust accordingly) */
+.admin-projects-input,
+.admin-projects-textarea,
+.admin-projects-upload-box,
+.admin-projects-file-input,
+.admin-projects-save-btn,
+.admin-projects-cancel-btn {
+  box-sizing: border-box;
+  width: 100%;
+  padding-right: 16px !important;
+  padding-left: 16px !important;
+}
+
+/* 3. Topbar: ensure email and logout stay on screen and wrap */
+@media (max-width: 768px) {
+  .topbar {
+    padding: 10px 12px !important;
+    gap: 8px;
+  }
+  .topbar-left {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .user-info {
+    margin-left: 0;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .user-email {
+    max-width: 150px;
+    font-size: 12px;
+    overflow-x: auto;
+    white-space: normal;
+    word-break: break-all;
+  }
+  .logout-btn {
+    white-space: nowrap;
+  }
+  /* Ensure hamburger and title don't overlap */
+  .sidebar-hamburger {
+    margin-right: 8px;
+  }
+  .topbar-left h2 {
+    font-size: 18px;
+    white-space: normal;
+  }
+}
+
+/* 4. Global input/textarea box-sizing for all admin forms */
+.admin-card input,
+.admin-card button,
+.admin-certificates-input,
+.admin-certificates-textarea,
+.admin-projects-input,
+.admin-projects-textarea {
+  box-sizing: border-box;
+}
