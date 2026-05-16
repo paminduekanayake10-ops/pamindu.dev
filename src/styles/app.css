@@ -1911,3 +1911,24 @@ section { width: 100%; }
   transform: none !important;
   opacity: 1 !important;
 }
+
+/* =========================
+   FIX CONTACT FORM RIGHT PADDING ON MOBILE
+========================= */
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 60px 5% !important;
+  }
+  .contact-form {
+    width: 100%;
+    padding-right: 0 !important;
+  }
+  .contact-form input,
+  .contact-form textarea,
+  .contact-form button {
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
