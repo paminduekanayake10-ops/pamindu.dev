@@ -1482,6 +1482,7 @@ section { width: 100%; }
 /* Hero Section */
 .about-hero {
   min-height: 80vh;
+  overflow: visible;
   display: flex;
   align-items: center;
   background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
@@ -1702,4 +1703,279 @@ section { width: 100%; }
     flex-direction: column;
     align-items: stretch;
   }
+}
+
+/* =========================
+   ABOUT PAGE STYLES – CLEANED FOR NO DOUBLE SCROLL
+========================= */
+
+.about-page {
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+/* Hero Section – no fixed heights, no overflow */
+.about-hero {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 100%);
+  padding: 80px 10%;
+  overflow: visible;
+}
+.about-hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  overflow: visible;
+}
+.about-hero-text {
+  flex: 1;
+  overflow: visible;
+}
+.about-hero-text h1 {
+  font-size: 3.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #2563eb, #4f46e5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.tagline {
+  font-size: 1.2rem;
+  color: #475569;
+  margin-bottom: 2rem;
+}
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.hero-buttons .btn-primary,
+.hero-buttons .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.about-hero-image {
+  flex: 1;
+  text-align: center;
+  overflow: visible;
+}
+.profile-img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2);
+  border: 4px solid white;
+  transition: transform 0.3s;
+  max-width: 100%;
+  height: auto;
+}
+.profile-img:hover {
+  transform: scale(1.02);
+}
+
+/* Biography Grid */
+.about-bio {
+  padding: 80px 10%;
+  background: white;
+  overflow: visible;
+}
+.bio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  overflow: visible;
+}
+.bio-text h2,
+.bio-details h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+}
+.bio-text p {
+  margin-bottom: 1rem;
+  line-height: 1.7;
+  color: #334155;
+}
+.details-list {
+  list-style: none;
+  padding: 0;
+}
+.details-list li {
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: #1e293b;
+}
+.details-list li span {
+  font-weight: 700;
+  width: 100px;
+  display: inline-block;
+  color: #475569;
+}
+.social-links {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+}
+.social-links a {
+  background: #0f172a;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.social-links a:hover {
+  background: #2563eb;
+  transform: translateY(-2px);
+}
+
+/* Skills Highlights */
+.about-skills {
+  padding: 80px 10%;
+  background: #f1f5f9;
+  text-align: center;
+  overflow: visible;
+}
+.about-skills h2 {
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+.skills-highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  overflow: visible;
+}
+.skill-highlight {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+}
+.skill-highlight:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+}
+.skill-icon {
+  font-size: 2.5rem;
+  color: #3b82f6;
+  margin-bottom: 1rem;
+}
+.skill-highlight h3 {
+  margin-bottom: 0.75rem;
+}
+.skill-highlight p {
+  color: #475569;
+}
+
+/* Call to Action */
+.about-cta {
+  padding: 80px 10%;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+  text-align: center;
+  overflow: visible;
+}
+.about-cta h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+.about-cta p {
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  color: #cbd5e1;
+}
+.about-cta .btn-primary {
+  background: #2563eb;
+}
+.about-cta .btn-primary:hover {
+  background: #1d4ed8;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .about-hero-content {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .hero-buttons {
+    justify-content: center;
+  }
+  .bio-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .profile-img {
+    width: 220px;
+    height: 220px;
+  }
+}
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 60px 5%;
+  }
+  .about-hero-text h1 {
+    font-size: 2.5rem;
+  }
+  .tagline {
+    font-size: 1rem;
+  }
+  .skills-highlight-grid {
+    grid-template-columns: 1fr;
+  }
+  .details-list li span {
+    width: 80px;
+  }
+}
+@media (max-width: 480px) {
+  .about-hero-text h1 {
+    font-size: 2rem;
+  }
+  .profile-img {
+    width: 160px;
+    height: 160px;
+  }
+  .hero-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* FINAL OVERRIDE – KILL ANY HIDDEN OVERFLOW THAT COULD CAUSE DOUBLE SCROLL */
+.about-hero,
+.about-hero-content,
+.about-hero-text,
+.about-hero-image,
+.about-bio,
+.about-skills,
+.about-cta,
+.about-page > *,
+.about-page .container {
+  overflow: visible !important;
+  overflow-y: visible !important;
+  overflow-x: visible !important;
+  max-height: none !important;
+  height: auto !important;
+  min-height: 0 !important;
+}
+
+/* KILL ALL INNER SCROLLBARS – DIAGNOSTIC ONLY */
+html, body, div, section, article, main, aside, header, footer, nav,
+.about-page, .about-hero, .about-hero-content, .about-hero-text, .about-hero-image,
+.about-bio, .about-skills, .about-cta, .container, .reveal, .bio-grid, .skills-highlight-grid,
+.projects-grid, .cert-grid, .skill-card, .project-card, .cert-card {
+  overflow: visible !important;
+  overflow-x: visible !important;
+  overflow-y: visible !important;
+  max-height: none !important;
+  height: auto !important;
+  min-height: 0 !important;
 }
